@@ -1,0 +1,67 @@
+int b1 = 2;
+int b2 = 3;
+int buzzer = 4;
+int botao = 0;
+int estadoB1;
+int estadoB2;
+int modo = 0;
+
+
+void setup()
+{
+  pinMode (b1, INPUT);
+  pinMode (b2, INPUT);
+  pinMode (buzzer, OUTPUT);
+  Serial.begin (9600);
+
+}
+
+void loop() 
+{
+  estadoB1 = digitalRead(b1);
+  estadoB2 = digitalRead(b2);
+
+  if(estadoB1 == HIGH)
+  {
+    modo = 1;
+  }
+  else if(estadoB2 == HIGH)
+  {
+    modo = 2;
+  }
+  else
+  {
+    modo = 0;
+  }
+ switch (modo)
+ {
+  case 0:
+  digitalWrite(buzzer, LOW);
+  
+  break;
+
+  case 1:
+  tocaMusica1();
+  break;
+
+  case 2:
+  tocaMusica2 ();
+  break;
+  
+ }
+ 
+
+}
+
+
+void tocaMusica1 ()
+{
+  tone(buzzer, 700);
+
+  
+}
+void tocaMusica2 ()
+{
+  tone(buzzer, 70);
+  
+}
